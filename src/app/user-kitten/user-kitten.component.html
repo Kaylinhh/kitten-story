@@ -1,1 +1,7 @@
-<p>user-kitten works!</p>
+<h2> Mes chatons </h2>
+<ul>
+    <li *ngFor="let userKitten of userKittenList">
+        <img class="kitten-image" [src]="userKitten.image ">
+        {{ userKitten.name }}
+    </li>
+</ul>

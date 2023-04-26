@@ -1,1 +1,54 @@
-<p>create-kitten works!</p>
+<h2>Crée ton chaton! 🐈</h2>
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()">
+
+    <fieldset>
+        <label for="kitten-name">Nom: </label>
+        <input id="kitten-name" name="kitten-name" type="text" [(ngModel)]="kitten.name" #name="ngModel" required />
+    </fieldset>
+
+    <!-- Message d'erreurs de name -->
+    <div *ngIf="myForm.submitted && name.errors">
+        <span *ngIf="name.errors?.['required']">Le nom est requis</span>
+    </div>
+
+
+    <fieldset>
+        <label for="kitten-race">Race: </label>
+        <input id="kitten-race" name="kitten-race" [(ngModel)]="kitten.race" #race="ngModel" type="string" required>
+    </fieldset>
+
+    <!-- Message d'erreurs de race -->
+    <div *ngIf="myForm.submitted && race.errors">
+        <span *ngIf="race.errors?.['required']">La race est requise</span>
+    </div>
+
+
+    <fieldset>
+        <label for="kitten-birthdate">Date de naissance: </label>
+        <input id="kitten-birthdate" name="kitten-birthdate" type="date" [(ngModel)]="kitten.birthdate"
+            #birthdate="ngModel" required>
+    </fieldset>
+
+    <!-- Message d'erreurs de birthdate -->
+    <div *ngIf="myForm.submitted && birthdate.errors">
+        <span *ngIf="birthdate.errors?.['required']">La date de naissance est requise</span>
+    </div>
+
+
+    <fieldset>
+        <label for="kitten-image">Photo (lien URL): </label>
+        <input id="kitten-image" name="kitten-image" type="string" [(ngModel)]="kitten.image" #image="ngModel" required>
+    </fieldset>
+
+    <!-- Message d'erreurs de image -->
+    <div *ngIf="myForm.submitted && image.errors">
+        <span *ngIf="image.errors?.['required']">La photo est requise</span>
+    </div>
+
+
+    <!-- <button type="reset">Restaurer</button> -->
+
+    <!-- Need to add an ngStyle to the button 
+        so that it changes color when the form is valid -->
+    <button type="submit">Créer</button>
+</form>

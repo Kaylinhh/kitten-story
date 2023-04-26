@@ -1,1 +1,6 @@
-<p>list-kitten works!</p>
+<ul>
+    <li *ngFor="let kitten of globalKittenList">
+        <img class="kitten-image" [src]="kitten.image" alt="photo de chat">
+        <button (click)="adoptKitten(kitten)">Adopte un chat 😼</button>
+    </li>
+</ul>
